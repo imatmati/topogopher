@@ -1,0 +1,19 @@
+syntax = "proto3";
+package messages;
+
+message Topography {
+	map<string,double> distances=1;
+}
+message Locations {
+	repeated string location=1;
+}
+
+message Void {}
+
+
+message PingResponse {}
+
+service TopoService {
+	rpc ReportDistance(Locations) returns (Topography){}
+	rpc Ping(Void) returns (PingResponse) {}
+}
